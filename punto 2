@@ -1,22 +1,5 @@
 import math
-def archivo(dic,lista):
-    with open ("prototipos.csv","r") as archivo: 
-        next(archivo)
-        for linea in archivo:
-            linea=linea.rstrip("\n")
-            lista=linea.split(",")
-            nombre=lista[0].lower()
-            masa=int(lista[1].lower())
-            capa_comb=int(lista[2].lower())
-            costo=int(lista[3].lower())
-            vel_max=int(lista[4].lower())
-            dist_opt=int(lista[5].lower())
-            dic={"nombre":nombre,"masa":masa,"capacidad de combustible":capa_comb,"constante de costo":costo,"velocidad maxima soportada":vel_max,"distancia optima":dist_opt}
-            print(dic)
-        #print(dic.values())
-        #valores=dic.values()
-        #for valores in dic.values:
-            #print(valores)
+
 def costo_vuelo(dic,costo):
     print(dic)
     tiempo=int(input("Ingrese el tiempo de vuelo:\n"))
@@ -30,13 +13,19 @@ def riesgo(dic,capa_comb,masa,dist_opt):
 def main():
     dic={}
     lista=[]
-    archivo(dic,lista)
-    nombre=lista[0].lower()
-    masa=int(lista[1].lower())
-    capa_comb=int(lista[2].lower())
-    costo=int(lista[3].lower())
-    vel_max=int(lista[4].lower())
-    dist_opt=int(lista[5].lower())
+    with open ("prototipos.csv","r") as archivo: 
+        next(archivo)
+        for linea in archivo:
+            linea=linea.rstrip("\n")
+            lista=linea.split(",")
+            nombre=lista[0].lower()
+            masa=int(lista[1].lower())
+            capa_comb=int(lista[2].lower())
+            costo=int(lista[3].lower())
+            vel_max=int(lista[4].lower())
+            dist_opt=int(lista[5].lower())
+            dic={"nombre":nombre,"masa":masa,"capacidad de combustible":capa_comb,"constante de costo":costo,"velocidad maxima soportada":vel_max,"distancia optima":dist_opt}
+            print(dic)
     costo_vuelo(dic,costo)
     riesgo(dic,capa_comb,masa,dist_opt)
 main()
