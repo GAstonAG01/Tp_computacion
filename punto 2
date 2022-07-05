@@ -1,13 +1,11 @@
 import math
 
-def costo_vuelo(dic,costo):
+def costo_vuelo(dic,costo,tiempo):
     print(dic)
-    tiempo=int(input("Ingrese el tiempo de vuelo:\n"))
     costo_total=costo/(30+tiempo)
     print("El costo de vuelo en funcion del tiempo es:",costo_total,"millones de USD.")
-def riesgo(dic,capa_comb,masa,dist_opt):
+def riesgo(dic,capa_comb,masa,dist_opt,tiempo):
     k=capa_comb/(masa*dist_opt)
-    tiempo=int(input("INgrese el tiempo de vuelo:\n"))
     riesgo=math.e**(tiempo*k)
     print("El riesgo en funcion del tiempo de vuelo es:",riesgo)
 def main():
@@ -26,6 +24,7 @@ def main():
             dist_opt=int(lista[5].lower())
             dic={"nombre":nombre,"masa":masa,"capacidad de combustible":capa_comb,"constante de costo":costo,"velocidad maxima soportada":vel_max,"distancia optima":dist_opt}
             print(dic)
-    costo_vuelo(dic,costo)
-    riesgo(dic,capa_comb,masa,dist_opt)
+    tiempo=int(input("Ingrese el tiempo de vuelo:\n"))
+    costo_vuelo(dic,costo,tiempo)
+    riesgo(dic,capa_comb,masa,dist_opt,tiempo)
 main()
